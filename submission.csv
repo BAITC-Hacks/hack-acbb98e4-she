@@ -1,0 +1,6 @@
+campaign_name,filter_arpu_segment,filter_data_segment,filter_call_segment,filter_current_tariff,target_tariff,channel
+Evidence_01_tariff_9_call,LOW,,,tariff_8,tariff_9,call
+Evidence_02_tariff_9_sms,LOW,,,tariff_4,tariff_9,sms
+Evidence_03_tariff_11_sms,MID,,,tariff_10,tariff_11,sms
+Evidence_04_tariff_9_sms,LOW,,,tariff_10,tariff_9,sms
+Evidence_05_tariff_9_sms,LOW,,,tariff_13,tariff_9,sms

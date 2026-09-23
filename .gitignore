@@ -1,0 +1,23 @@
+# Python and local environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Credentials and machine-specific files
+.env
+.env.*
+!.env.example
+.DS_Store
+.idea/
+
+# The supplied synthetic participant data is included in this private team repo.
+*.zip
+PARTICIPANT_GUIDE.pdf
+
+# Intermediate experiment outputs; final submission.csv is not ignored.
+artifacts/
+work/

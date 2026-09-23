@@ -1,0 +1,44 @@
+=== Результат команды: local ===
+Статус: PASS
+Baseline ARPU (без кампаний):      150,641,084
+Прирост ARPU (gross):                1,632,869
+Затраты на коммуникацию:                99,364
+ЧИСТЫЙ РЕЗУЛЬТАТ (net):              1,533,505   (+1.018% к baseline)
+ARPU после кампаний:               152,174,590
+
+Кампаний: 25  |  контактов: 3,838  |  уникальных абонентов: 3,322 (14.2%)
+Средний чистый прирост на абонента: 461.6
+ROI (gross lift / затраты): 16.43
+Risk score (% абонентов с отрицательным эффектом): 4.0%
+Бюджет: 99,364 из 100,000 у.е. (99.4%)
+
+По кампаниям (gross, до дедупликации между кампаниями):
+  - pilot_1 [sms]: контактов=110  cost=440  gross_lift=5,674  negative=0
+  - pilot_2 [sms]: контактов=79  cost=316  gross_lift=75,596  negative=0
+  - pilot_3 [sms]: контактов=200  cost=800  gross_lift=3,854  negative=0
+  - pilot_4 [sms]: контактов=120  cost=480  gross_lift=34,782  negative=0
+  - pilot_5 [sms]: контактов=106  cost=424  gross_lift=9,543  negative=0
+  - pilot_6 [sms]: контактов=98  cost=392  gross_lift=16,686  negative=0
+  - pilot_7 [sms]: контактов=93  cost=372  gross_lift=25,642  negative=0
+  - pilot_8 [sms]: контактов=76  cost=304  gross_lift=16,300  negative=0
+  - pilot_9 [sms]: контактов=75  cost=300  gross_lift=-4,099  negative=70
+  - pilot_10 [sms]: контактов=75  cost=300  gross_lift=32,312  negative=0
+  - pilot_11 [sms]: контактов=86  cost=344  gross_lift=2,043  negative=0
+  - pilot_12 [sms]: контактов=120  cost=480  gross_lift=2,411  negative=0
+  - pilot_13 [sms]: контактов=73  cost=292  gross_lift=58,768  negative=0
+  - pilot_14 [sms]: контактов=72  cost=288  gross_lift=42,642  negative=0
+  - pilot_15 [call]: контактов=79  cost=12,640  gross_lift=132,482  negative=0
+  - pilot_16 [sms]: контактов=106  cost=424  gross_lift=14,634  negative=0
+  - pilot_17 [sms]: контактов=71  cost=284  gross_lift=42,663  negative=0
+  - pilot_18 [sms]: контактов=81  cost=324  gross_lift=2,112  negative=0
+  - pilot_19 [sms]: контактов=74  cost=296  gross_lift=-4,166  negative=74
+  - pilot_20 [digital_ads]: контактов=22  cost=484  gross_lift=26,104  negative=0
+  - Evidence_01_tariff_9_call [call]: контактов=457  cost=73,120  gross_lift=760,634  negative=0
+  - Evidence_02_tariff_9_sms [sms]: контактов=299  cost=1,196  gross_lift=233,149  negative=0
+  - Evidence_03_tariff_11_sms [sms]: контактов=645  cost=2,580  gross_lift=192,631  negative=0
+  - Evidence_04_tariff_9_sms [sms]: контактов=370  cost=1,480  gross_lift=163,512  negative=0
+  - Evidence_05_tariff_9_sms [sms]: контактов=251  cost=1,004  gross_lift=140,542  negative=0
+
+Пилотов проведено: 20 из 20
+Осталось бюджета: 80,016 из 100,000
+Осталось охвата:  13,184 из 15,000
