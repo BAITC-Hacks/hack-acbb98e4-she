@@ -105,6 +105,8 @@
   "pilot_cost": 19984.0,
   "total_contacts": 3838,
   "total_cost": 99364.0,
+  "remaining_budget_after_plan": 636.0,
+  "remaining_contacts_after_plan": 11162,
   "strategy": {
     "strategy": "adaptive_evidence_portfolio",
     "assumptions": {
@@ -586,7 +588,7 @@
     },
     "planned_contacts": 2022,
     "planned_cost": 79380.0,
-    "elapsed_seconds": 0.20282579199999995,
+    "elapsed_seconds": 0.19994720899999996,
     "candidate_cells": 63
   }
 }
