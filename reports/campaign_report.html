@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>She++ · План тарифных кампаний</title>
+<style>
+:root{color-scheme:light;--ink:#142027;--muted:#56606b;--line:#dfe4e5;--yellow:#ffd328}
+*{box-sizing:border-box}body{margin:0;font:16px/1.55 system-ui,-apple-system,sans-serif;background:#f4f6f5;color:var(--ink)}
+main{max-width:1220px;margin:auto;padding:42px 28px 60px}header{background:var(--ink);color:white;border-radius:24px;padding:36px;margin-bottom:24px}
+.tag{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--yellow)}h1{font-size:clamp(28px,4vw,44px);line-height:1.15;margin:16px 0}
+header p{color:#d8e0e2;max-width:800px}section{background:white;border:1px solid var(--line);border-radius:18px;padding:26px;margin-top:22px}
+h2{font-size:22px;margin:0 0 14px}h3{font-size:16px}.stats,.compare{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.stats article{background:white;border:1px solid var(--line);padding:20px;border-radius:16px}.number{font-size:28px;font-weight:750;line-height:1.2;margin:6px 0}
+.sub{color:var(--muted);font-size:14px}.compare{grid-template-columns:1fr 1fr}.compare article{background:#f5f7f6;padding:20px;border-radius:12px}
+.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;text-align:left;font-size:14px}th{background:#f3f5f4;color:var(--muted)}th,td{padding:12px;border-bottom:1px solid var(--line);vertical-align:top}
+.ok{color:#166445;font-weight:650}.notice{background:#fff6c9;padding:14px 18px;border-radius:12px}input,button{font:inherit;border:1px solid #9ca9a9;border-radius:8px;padding:9px 12px;background:white}input{min-width:260px;margin-bottom:16px}button{cursor:pointer;float:right}a{color:#075e77}pre{overflow:auto;max-height:460px;padding:16px;background:#f5f7f6;font-size:12px}
+footer{color:var(--muted);font-size:13px;margin-top:24px}@media(max-width:760px){main{padding:20px 12px}.stats{grid-template-columns:1fr 1fr}.compare{grid-template-columns:1fr}header,section{padding:20px}.number{font-size:23px}}
+@media print{button,input{display:none}body{background:white}main{padding:0}section{break-inside:avoid}header{color:black;background:white;border:1px solid #ccc}header p{color:black}}
+</style><main>
+<header><div class="tag">She++ / Campaign Lab / локальная демонстрация</div>
+<h1>План кампаний,<br>подтверждённый пилотами</h1>
+<p>Сегменты → гипотезы → пилоты → оценка неопределённости → кампании в пределах ресурсов.</p>
+<p>Синтетический кейс Beeline. Результаты относятся к выданной мок-среде; это не прогноз оценки жюри.</p></header>
+<div class="stats">
+<article><div class="sub">Финальные кампании</div><div class="number">5 / 10</div><div class="sub">корректность плана проверена</div></article>
+<article><div class="sub">Расходы, у.е.</div><div class="number">99 364</div><div class="sub">из 100 000, включая пилоты</div></article>
+<article><div class="sub">Контакты</div><div class="number">3 838</div><div class="sub">из 15 000, включая повторы и пилоты</div></article>
+<article><div class="sub">Пилоты</div><div class="number">20 / 20</div><div class="sub">фактически выполнены, seed 42</div></article>
+</div>
+<section><h2>План для аналитика <button onclick="window.print()">Печать / PDF</button></h2>
+<p class="ok">Независимый аудит пройден: схемы, фильтры, размеры аудиторий и остатки ресурсов.</p>
+<input id="search" aria-label="Поиск по кампаниям" placeholder="Найти тариф, сегмент или канал…">
+<div class="scroll"><table><thead><tr><th>Кампания</th><th>Сегмент</th><th>Целевой тариф</th><th>Канал</th><th>Контакты</th><th>Расходы, у.е.</th></tr></thead><tbody><tr><td>Evidence_01_tariff_9_call</td><td>current_tariff: tariff_8, arpu_segment: LOW</td><td>tariff_9</td><td>call</td><td>457</td><td>73 120</td></tr>
+<tr><td>Evidence_02_tariff_9_sms</td><td>current_tariff: tariff_4, arpu_segment: LOW</td><td>tariff_9</td><td>sms</td><td>299</td><td>1 196</td></tr>
+<tr><td>Evidence_03_tariff_11_sms</td><td>current_tariff: tariff_10, arpu_segment: MID</td><td>tariff_11</td><td>sms</td><td>645</td><td>2 580</td></tr>
+<tr><td>Evidence_04_tariff_9_sms</td><td>current_tariff: tariff_10, arpu_segment: LOW</td><td>tariff_9</td><td>sms</td><td>370</td><td>1 480</td></tr>
+<tr><td>Evidence_05_tariff_9_sms</td><td>current_tariff: tariff_13, arpu_segment: LOW</td><td>tariff_9</td><td>sms</td><td>251</td><td>1 004</td></tr></tbody></table></div>
+<p class="sub">Уникальных абонентов финального плана: 2 022. Пилотные пересечения не вычитаются из контактов; дедупликацию выручки выполняет официальный оценщик.</p></section>
+<section><h2>Сравнение на одинаковых seed</h2><p>Фактический чистый прирост в локальном оценщике после затрат, включая пилоты.</p><div class="compare"><article><h3>Шаблон организаторов</h3><p class="number">-480 836</p><p>средний чистый прирост ARPU</p><p>Минимум: -1 019 431 · Медиана: -357 948</p><p>Положительных прогонов: 0 / 10</p></article><article><h3>Адаптивный агент</h3><p class="number">1 477 583</p><p>средний чистый прирост ARPU</p><p>Минимум: 1 100 796 · Медиана: 1 449 372</p><p>Положительных прогонов: 10 / 10</p></article></div>
+<p class="notice">На судействе эффекты другие. Положительные результаты здесь проверяют механику и устойчивость на мок-среде, но не гарантируют прибыль в иной среде.</p></section>
+<section><h2>Почему приняты эти решения</h2><p>Журнал агента содержит наблюдения пилотов и оценки риска. Эти оценки не являются истинными эффектами среды.</p>
+<details><summary>Показать журнал принятия решений</summary><pre>{
+  &quot;strategy&quot;: &quot;adaptive_evidence_portfolio&quot;,
+  &quot;assumptions&quot;: {
+    &quot;noise_std&quot;: 0.8,
+    &quot;risk_aversion&quot;: 1.28,
+    &quot;uncertainty&quot;: &quot;working normal-noise estimate; no coverage guarantee&quot;,
+    &quot;history&quot;: &quot;ranking only; different cohort, non-causal observations&quot;,
+    &quot;channel_transfer&quot;: &quot;search heuristic only; final channels directly piloted&quot;,
+    &quot;pilot_overlap&quot;: &quot;sample IDs unavailable; pilot/final overlap is not exactly measurable&quot;
+  },
+  &quot;initial_resources&quot;: {
+    &quot;budget&quot;: 100000.0,
+    &quot;contacts&quot;: 15000,
+    &quot;pilots_left&quot;: 20
+  },
+  &quot;pilots&quot;: [
+    {
+      &quot;step&quot;: 1,
+      &quot;action&quot;: &quot;explore&quot;,
+      &quot;filters&quot;: {
+        &quot;filter_current_tariff&quot;: &quot;tariff_4&quot;,
+        &quot;filter_arpu_segment&quot;: &quot;MID&quot;
+      },
+      &quot;target_tariff&quot;: &quot;tariff_9&quot;,
+      &quot;channel&quot;: &quot;sms&quot;,
+      &quot;requested_n&quot;: 110,
+      &quot;actual_n&quot;: 110,
+      &quot;observed_lift_ratio&quot;: -0.06915304167631162,
+      &quot;pooled_lift_ratio&quot;: -0.06915304167631162,
+      &quot;standard_error&quot;: 0.07627700713964738,
+      &quot;cost&quot;: 440.0,
+      &quot;reason&quot;: &quot;signed financial history, ARPU coverage and audience value&quot;,
+      &quot;priority&quot;: 883487.8930396258
+    },
+    {
+      &quot;step&quot;: 2,
+      &quot;action&quot;: &quot;explore&quot;,
+      &quot;filters&quot;: {
+        &quot;filter_current_tariff&quot;: &quot;tariff_8&quot;,
+        &quot;filter_arpu_segment&quot;: &quot;LOW&quot;
+      },
+      &quot;target_tariff&quot;: &quot;tariff_9&quot;,
+      &quot;channel&quot;: &quot;sms&quot;,
+      &quot;requested_n&quot;: 79,
+      &quot;actual_n&quot;: 79,
+      &quot;observed_lift_ratio&quot;: 0.38185374912031567,
+      &quot;pooled_lift_ratio&quot;: 0.38185374912031567,
+      &quot;standard_error&quot;: 0.09000703207408192,
+      &quot;cost&quot;: 316.0,
+      &quot;reason&quot;: &quot;signed financial history, ARPU coverage and audience value&quot;,
+      &quot;priority&quot;: 347231.0103004313
+    },
+    {
+      &quot;step&quot;: 3,
+      &quot;action&quot;: &quot;explore&quot;,
+      &quot;filters&quot;: {
+        &quot;filter_current_tariff&quot;: &quot;tariff_8&quot;,
+        &quot;filter_arpu_segment&quot;: &quot;HIGH&quot;
+      },
+      &quot;target_tariff&quot;: &quot;tariff_11&quot;,
+      &quot;channel&quot;: &quot;sms&quot;,
+      &quot;requested_n&quot;: 200,
+      &quot;actual_n&quot;: 200,
+      &quot;observed_lift_ratio&quot;: -0.10836065262919696,
+      &quot;pooled_lift_ratio&quot;: -0.10836065262919696,
+      &quot;standard_error&quot;: 0.0565685424949238,
+      &quot;cost&quot;: 800.0,
+      &quot;reason&quot;: &quot;signed financial history, ARPU coverage and audience value&quot;,
+      &quot;priority&quot;: 227268.3279184941
+    },
+    {
+      &quot;step&quot;: 4,
+      &quot;action&quot;: &quot;explore&quot;,
+      &quot;filters&quot;: {
+        &quot;filter_current_tariff&quot;: &quot;tariff_8&quot;,
+        &quot;filter_arpu_segment&quot;: &quot;MID&quot;
+      },
+      &quot;target_tariff&quot;: &quot;tariff_10&quot;,
+      &quot;channel&quot;: &quot;sms&quot;,
+      &quot;requested_n&quot;: 120,
+      &quot;actual_n&quot;: 120,
+      &quot;observed_lift_ratio&quot;: -0.032700228243961044,
+      &quot;pooled_lift_ratio&quot;: -0.032700228243961044,
+      &quot;standard_error&quot;: 0.07302967433402215,
+      &quot;cost&quot;: 480.0,
+      &quot;reason&quot;: &quot;signed financial history, ARPU coverage and audience value&quot;,
+      &quot;priority&quot;: 762096.9937069413
+    },
+    {
+      &quot;step&quot;: 5,
+      &quot;action&quot;: &quot;explore&quot;,
+      &quot;filters&quot;: {
+        &quot;filter_current_tariff&quot;: &quot;tariff_13&quot;,
+        &quot;filter_arpu_segment&quot;: &quot;MID&quot;
+      },
+      &quot;target_tariff&quot;: &quot;tariff_9&quot;,
+      &quot;channel&quot;: &quot;sms&quot;,
+      &quot;requested_n&quot;: 106,
+      &quot;actual_n&quot;: 106,
+      &quot;observed_lift_ratio&quot;: -0.006209889714095935,
+      &quot;pooled_lift_ratio&quot;: -0.006209889714095936,
+      &quot;standard_error&quot;: 0.07770286898858114,
+      &quot;cost&quot;: 424.0,
+      &quot;reason&quot;: &quot;signed financial history, ARPU coverage and audience value&quot;,
+      &quot;priority&quot;: 612085.7843800625
+    },
+    {
+      &quot;step&quot;: 6,
+      &quot;action&quot;: &quot;explore&quot;,
+      &quot;filters&quot;: {
+        &quot;filter_current_tariff&quot;: &quot;tariff_14&quot;,
+        &quot;filter_arpu_segment&quot;: &quot;MID&quot;
+      },
+      &quot;target_tariff&quot;: &quot;tariff_9&quot;,
+      &quot;channel&quot;: &quot;sms&quot;,
+      &quot;requested_n&quot;: 98,
+      &quot;actual_n&quot;: 98,
+      &quot;observed_lift_ratio&quot;: 0.03324082049799796,
+      &quot;pooled_lift_ratio&quot;: 0.03324082049799796,
+      &quot;standard_error&quot;: 0.08081220356417687,
+      &quot;cost&quot;: 392.0,
+      &quot;reason&quot;: &quot;signed financial history, ARPU coverage and audience value&quot;,
+      &quot;priority&quot;: 420498.9481339764
+    },
+    {
+      &quot;step&quot;: 7,
+      &quot;action&quot;: &quot;explore&quot;,
+      &quot;filters&quot;: {
+        &quot;filter_current_tariff&quot;: &quot;tariff_10&quot;,
+        &quot;filter_arpu_segment&quot;: &quot;MID&quot;
+      },
+      &quot;target_tariff&quot;: &quot;tariff_11&quot;,
+      &quot;channel&quot;: &quot;sms&quot;,
+      &quot;requested_n&quot;: 93,
+      &quot;actual_n&quot;: 93,
+      &quot;observed_lift_ratio&quot;: 0.13744732513489416,
+      &quot;pooled_lift_ratio&quot;: 0.13744732513489416,
+      &quot;standard_error&quot;: 0.08295613557843402,
+      &quot;cost&quot;: 372.0,
+      &quot;reason&quot;: &quot;signed financial history, ARPU coverage and audience value&quot;,
+      &quot;priority&quot;: 256087.03806480058
+    },
+    {
+      &quot;step&quot;: 8,
+      &quot;action&quot;: &quot;explore&quot;,
+      &quot;filters&quot;: {
+        &quot;filter_current_tariff&quot;: &quot;tariff_11&quot;,
+        &quot;filter_arpu_segment&quot;: &quot;LOW&quot;
+      },
+      &quot;target_tariff&quot;: &quot;tariff_9&quot;,
+      &quot;channel&quot;: &quot;sms&quot;,
+      &quot;requested_n&quot;: 76,
+      &quot;actual_n&quot;: 76,
+      &quot;observed_lift_ratio&quot;: 0.150469591509849,
+      &quot;pooled_lift_ratio&quot;: 0.150469591509849,
+      &quot;standard_error&quot;: 0.0917662935482247,
+      &quot;cost&quot;: 304.0,
+      &quot;reason&quot;: &quot;signed financial history, ARPU coverage and audience value&quot;,
+      &quot;priority&quot;: 227665.96780358453
+    },
+    {
+      &quot;step&quot;: 9,
+      &quot;action&quot;: &quot;explore&quot;,
+      &quot;filters&quot;: {
+        &quot;filter_current_tariff&quot;: &quot;tariff_12&quot;,
+        &quot;filter_arpu_segment&quot;: &quot;LOW&quot;
+      },
+      &quot;target_tariff&quot;: &quot;tariff_9&quot;,
+      &quot;channel&quot;: &quot;sms&quot;,
+      &quot;requested_n&quot;: 75,
+      &quot;actual_n&quot;: 75,
+      &quot;observed_lift_ratio&quot;: 0.08553308563814536,
+      &quot;pooled_lift_ratio&quot;: 0.08553308563814536,
+      &quot;standard_error&quot;: 0.09237604307034011,
+      &quot;cost&quot;: 300.0,
+      &quot;reason&quot;: &quot;signed financial history, ARPU coverage and audience value&quot;,
+      &quot;priority&quot;: 208326.92123049402
+    },
+    {
+      &quot;step&quot;: 10,
+      &quot;action&quot;: &quot;explore&quot;,
+      &quot;filters&quot;: {
+        &quot;filter_current_tariff&quot;: &quot;tariff_10&quot;,
+        &quot;filter_arpu_segment&quot;: &quot;LOW&quot;
+      },
+      &quot;target_tariff&quot;: &quot;tariff_9&quot;,
+      &quot;channel&quot;: &quot;sms&quot;,
+      &quot;requested_n&quot;: 75,
+      &quot;actual_n&quot;: 75,
+      &quot;observed_lift_ratio&quot;: 0.21158463307526082,
+      &quot;pooled_lift_ratio&quot;: 0.21158463307526082,
+      &quot;standard_error&quot;: 0.09237604307034011,
+      &quot;cost&quot;: 300.0,
+      &quot;reason&quot;: &quot;signed financial history, ARPU coverage and audience value&quot;,
+      &quot;priority&quot;: 190729.68278788455
+    },
+    {
+      &quot;step&quot;: 11,
+      &quot;action&quot;: &quot;explore&quot;,
+      &quot;filters&quot;: {
+        &quot;filter_current_tariff&quot;: &quot;tariff_11&quot;,
+        &quot;filter_arpu_segment&quot;: &quot;MID&quot;
+      },
+      &quot;target_tariff&quot;: &quot;tariff_9&quot;,
+      &quot;channel&quot;: &quot;sms&quot;,
+      &quot;requested_n&quot;: 86,
+      &quot;actual_n&quot;: 86,
+      &quot;observed_lift_ratio&quot;: 0.037447235310405697,
+      &quot;pooled_lift_ratio&quot;: 0.037447235310405697,
+      &quot;standard_error&quot;: 0.08626621856275074,
+      &quot;cost&quot;: 344.0,
+      &quot;reason&quot;: &quot;signed financial history, ARPU coverage and audience value&quot;,
+      &quot;priority&quot;: 168244.14847579438
+    },
+    {
+      &quot;step&quot;: 12,
+      &quot;action&quot;: &quot;explore&quot;,
+      &quot;filters&quot;: {
+        &quot;filter_current_tariff&quot;: &quot;tariff_8&quot;,
+        &quot;filter_arpu_segment&quot;: &quot;MID&quot;
+      },
+      &quot;target_tariff&quot;: &quot;tariff_9&quot;,
+      &quot;channel&quot;: &quot;sms&quot;,
+      &quot;requested_n&quot;: 120,
+      &quot;actual_n&quot;: 120,
+      &quot;observed_lift_ratio&quot;: -0.06602532031131976,
+      &quot;pooled_lift_ratio&quot;: -0.06602532031131976,
+      &quot;standard_error&quot;: 0.07302967433402215,
+      &quot;cost&quot;: 480.0,
+      &quot;reason&quot;: &quot;signed financial history, ARPU coverage and audience value&quot;,
+      &quot;priority&quot;: 155257.43941066193
+    },
+    {
+      &quot;step&quot;: 13,
+      &quot;action&quot;: &quot;explore&quot;,
+      &quot;filters&quot;: {
+        &quot;filter_current_tariff&quot;: &quot;tariff_4&quot;,
+        &quot;filter_arpu_segment&quot;: &quot;LOW&quot;
+      },
+      &quot;target_tariff&quot;: &quot;tariff_9&quot;,
+      &quot;channel&quot;: &quot;sms&quot;,
+      &quot;requested_n&quot;: 73,
+      &quot;actual_n&quot;: 73,
+      &quot;observed_lift_ratio&quot;: 0.26717543088325807,
+      &quot;pooled_lift_ratio&quot;: 0.26717543088325807,
+      &quot;standard_error&quot;: 0.09363291775690447,
+      &quot;cost&quot;: 292.0,
+      &quot;reason&quot;: &quot;signed financial history, ARPU coverage and audience value&quot;,
+      &quot;priority&quot;: 145981.6245518829
+    },
+    {
+      &quot;step&quot;: 14,
+      &quot;action&quot;: &quot;explore&quot;,
+      &quot;filters&quot;: {
+        &quot;filter_current_tariff&quot;: &quot;tariff_13&quot;,
+        &quot;filter_arpu_segment&quot;: &quot;LOW&quot;
+      },
+      &quot;target_tariff&quot;: &quot;tariff_9&quot;,
+      &quot;channel&quot;: &quot;sms&quot;,
+      &quot;requested_n&quot;: 72,
+      &quot;actual_n&quot;: 72,
+      &quot;observed_lift_ratio&quot;: 0.16828201917270735,
+      &quot;pooled_lift_ratio&quot;: 0.16828201917270735,
+      &quot;standard_error&quot;: 0.09428090415820635,
+      &quot;cost&quot;: 288.0,
+      &quot;reason&quot;: &quot;signed financial history, ARPU coverage and audience value&quot;,
+      &quot;priority&quot;: 122725.97459354757
+    },
+    {
+      &quot;step&quot;: 15,
+      &quot;action&quot;: &quot;channel_check&quot;,
+      &quot;filters&quot;: {
+        &quot;filter_current_tariff&quot;: &quot;tariff_8&quot;,
+        &quot;filter_arpu_segment&quot;: &quot;LOW&quot;
+      },
+      &quot;target_tariff&quot;: &quot;tariff_9&quot;,
+      &quot;channel&quot;: &quot;call&quot;,
+      &quot;requested_n&quot;: 79,
+      &quot;actual_n&quot;: 79,
+      &quot;observed_lift_ratio&quot;: 0.6902246760910126,
+      &quot;pooled_lift_ratio&quot;: 0.6902246760910126,
+      &quot;standard_error&quot;: 0.09000703207408192,
+      &quot;cost&quot;: 12640.0,
+      &quot;reason&quot;: &quot;marginal channel economics; direct pilot required&quot;,
+      &quot;priority&quot;: 118310.87420874712
+    },
+    {
+      &quot;step&quot;: 16,
+      &quot;action&quot;: &quot;explore&quot;,
+      &quot;filters&quot;: {
+        &quot;filter_current_tariff&quot;: &quot;tariff_13&quot;,
+        &quot;filter_arpu_segment&quot;: &quot;MID&quot;
+      },
+      &quot;target_tariff&quot;: &quot;tariff_10&quot;,
+      &quot;channel&quot;: &quot;sms&quot;,
+      &quot;requested_n&quot;: 106,
+      &quot;actual_n&quot;: 106,
+      &quot;observed_lift_ratio&quot;: 0.015637662985900056,
+      &quot;pooled_lift_ratio&quot;: 0.015637662985900056,
+      &quot;standard_error&quot;: 0.07770286898858114,
+      &quot;cost&quot;: 424.0,
+      &quot;reason&quot;: &quot;signed financial history, ARPU coverage and audience value&quot;,
+      &quot;priority&quot;: 104887.81806096865
+    },
+    {
+      &quot;step&quot;: 17,
+      &quot;action&quot;: &quot;explore&quot;,
+      &quot;filters&quot;: {
+        &quot;filter_current_tariff&quot;: &quot;tariff_14&quot;,
+        &quot;filter_arpu_segment&quot;: &quot;LOW&quot;
+      },
+      &quot;target_tariff&quot;: &quot;tariff_8&quot;,
+      &quot;channel&quot;: &quot;sms&quot;,
+      &quot;requested_n&quot;: 71,
+      &quot;actual_n&quot;: 71,
+      &quot;observed_lift_ratio&quot;: 0.15138466335764936,
+      &quot;pooled_lift_ratio&quot;: 0.15138466335764936,
+      &quot;standard_error&quot;: 0.09494253265550827,
+      &quot;cost&quot;: 284.0,
+      &quot;reason&quot;: &quot;signed financial history, ARPU coverage and audience value&quot;,
+      &quot;priority&quot;: 97606.79111781517
+    },
+    {
+      &quot;step&quot;: 18,
+      &quot;action&quot;: &quot;explore&quot;,
+      &quot;filters&quot;: {
+        &quot;filter_current_tariff&quot;: &quot;tariff_12&quot;,
+        &quot;filter_arpu_segment&quot;: &quot;MID&quot;
+      },
+      &quot;target_tariff&quot;: &quot;tariff_9&quot;,
+      &quot;channel&quot;: &quot;sms&quot;,
+      &quot;requested_n&quot;: 81,
+      &quot;actual_n&quot;: 81,
+      &quot;observed_lift_ratio&quot;: 0.0537029103776608,
+      &quot;pooled_lift_ratio&quot;: 0.05370291037766079,
+      &quot;standard_error&quot;: 0.08888888888888889,
+      &quot;cost&quot;: 324.0,
+      &quot;reason&quot;: &quot;signed financial history, ARPU coverage and audience value&quot;,
+      &quot;priority&quot;: 86959.69647167587
+    },
+    {
+      &quot;step&quot;: 19,
+      &quot;action&quot;: &quot;confirm&quot;,
+      &quot;filters&quot;: {
+        &quot;filter_current_tariff&quot;: &quot;tariff_12&quot;,
+        &quot;filter_arpu_segment&quot;: &quot;LOW&quot;
+      },
+      &quot;target_tariff&quot;: &quot;tariff_9&quot;,
+      &quot;channel&quot;: &quot;sms&quot;,
+      &quot;requested_n&quot;: 74,
+      &quot;actual_n&quot;: 74,
+      &quot;observed_lift_ratio&quot;: 0.01945762293178172,
+      &quot;pooled_lift_ratio&quot;: 0.05271708402558893,
+      &quot;standard_error&quot;: 0.06553855364152325,
+      &quot;cost&quot;: 296.0,
+      &quot;reason&quot;: &quot;uncertainty can change profitability or alternative ranking&quot;,
+      &quot;priority&quot;: 33484.808524057764
+    },
+    {
+      &quot;step&quot;: 20,
+      &quot;action&quot;: &quot;channel_check&quot;,
+      &quot;filters&quot;: {
+        &quot;filter_current_tariff&quot;: &quot;tariff_8&quot;,
+        &quot;filter_arpu_segment&quot;: &quot;LOW&quot;
+      },
+      &quot;target_tariff&quot;: &quot;tariff_9&quot;,
+      &quot;channel&quot;: &quot;digital_ads&quot;,
+      &quot;requested_n&quot;: 22,
+      &quot;actual_n&quot;: 22,
+      &quot;observed_lift_ratio&quot;: 0.4844248127377302,
+      &quot;pooled_lift_ratio&quot;: 0.4844248127377302,
+      &quot;standard_error&quot;: 0.17056057308448835,
+      &quot;cost&quot;: 484.0,
+      &quot;reason&quot;: &quot;marginal channel economics; direct pilot required&quot;,
+      &quot;priority&quot;: 24597.584935342813
+    }
+  ],
+  &quot;decisions&quot;: [
+    {
+      &quot;campaign_name&quot;: &quot;Evidence_01_tariff_9_call&quot;,
+      &quot;filter_current_tariff&quot;: &quot;tariff_8&quot;,
+      &quot;filter_arpu_segment&quot;: &quot;LOW&quot;,
+      &quot;target_tariff&quot;: &quot;tariff_9&quot;,
+      &quot;channel&quot;: &quot;call&quot;,
+      &quot;n_customers&quot;: 457,
+      &quot;predicted_arpu_sum&quot;: 1312258.1647560755,
+      &quot;pilot_n&quot;: 79,
+      &quot;pilot_batches&quot;: 1,
+      &quot;lift_ratio_mean&quot;: 0.6902246760910126,
+      &quot;standard_error&quot;: 0.09000703207408192,
+      &quot;lift_ratio_lower&quot;: 0.5750156750361877,
+      &quot;communication_cost&quot;: 73120.0,
+      &quot;estimated_net&quot;: 832632.9667165488,
+      &quot;conservative_net&quot;: 681449.0144289635,
+      &quot;reason&quot;: &quot;positive conservative value; exact segment/target/channel piloted&quot;
+    },
+    {
+      &quot;campaign_name&quot;: &quot;Evidence_02_tariff_9_sms&quot;,
+      &quot;filter_current_tariff&quot;: &quot;tariff_4&quot;,
+      &quot;filter_arpu_segment&quot;: &quot;LOW&quot;,
+      &quot;target_tariff&quot;: &quot;tariff_9&quot;,
+      &quot;channel&quot;: &quot;sms&quot;,
+      &quot;n_customers&quot;: 299,
+      &quot;predicted_arpu_sum&quot;: 857563.179026669,
+      &quot;pilot_n&quot;: 73,
+      &quot;pilot_batches&quot;: 1,
+      &quot;lift_ratio_mean&quot;: 0.26717543088325807,
+      &quot;standard_error&quot;: 0.09363291775690447,
+      &quot;lift_ratio_lower&quot;: 0.14732529615442036,
+      &quot;communication_cost&quot;: 1196.0,
+      &quot;estimated_net&quot;: 227923.81186606688,
+      &quot;conservative_net&quot;: 125144.74932123022,
+      &quot;reason&quot;: &quot;positive conservative value; exact segment/target/channel piloted&quot;
+    },
+    {
+      &quot;campaign_name&quot;: &quot;Evidence_03_tariff_11_sms&quot;,
+      &quot;filter_current_tariff&quot;: &quot;tariff_10&quot;,
+      &quot;filter_arpu_segment&quot;: &quot;MID&quot;,
+      &quot;target_tariff&quot;: &quot;tariff_11&quot;,
+      &quot;channel&quot;: &quot;sms&quot;,
+      &quot;n_customers&quot;: 645,
+      &quot;predicted_arpu_sum&quot;: 3003700.1472749137,
+      &quot;pilot_n&quot;: 93,
+      &quot;pilot_batches&quot;: 1,
+      &quot;lift_ratio_mean&quot;: 0.13744732513489416,
+      &quot;standard_error&quot;: 0.08295613557843402,
+      &quot;lift_ratio_lower&quot;: 0.031263471594498604,
+      &quot;communication_cost&quot;: 2580.0,
+      &quot;estimated_net&quot;: 410270.55075022456,
+      &quot;conservative_net&quot;: 91326.09423272054,
+      &quot;reason&quot;: &quot;positive conservative value; exact segment/target/channel piloted&quot;
+    },
+    {
+      &quot;campaign_name&quot;: &quot;Evidence_04_tariff_9_sms&quot;,
+      &quot;filter_current_tariff&quot;: &quot;tariff_10&quot;,
+      &quot;filter_arpu_segment&quot;: &quot;LOW&quot;,
+      &quot;target_tariff&quot;: &quot;tariff_9&quot;,
+      &quot;channel&quot;: &quot;sms&quot;,
+      &quot;n_customers&quot;: 370,
+      &quot;predicted_arpu_sum&quot;: 972233.5682257856,
+      &quot;pilot_n&quot;: 75,
+      &quot;pilot_batches&quot;: 1,
+      &quot;lift_ratio_mean&quot;: 0.21158463307526082,
+      &quot;standard_error&quot;: 0.09237604307034011,
+      &quot;lift_ratio_lower&quot;: 0.09334329794522547,
+      &quot;communication_cost&quot;: 1480.0,
+      &quot;estimated_net&quot;: 204229.6827965044,
+      &quot;conservative_net&quot;: 89271.4876312492,
+      &quot;reason&quot;: &quot;positive conservative value; exact segment/target/channel piloted&quot;
+    },
+    {
+      &quot;campaign_name&quot;: &quot;Evidence_05_tariff_9_sms&quot;,
+      &quot;filter_current_tariff&quot;: &quot;tariff_13&quot;,
+      &quot;filter_arpu_segment&quot;: &quot;LOW&quot;,
+      &quot;target_tariff&quot;: &quot;tariff_9&quot;,
+      &quot;channel&quot;: &quot;sms&quot;,
+      &quot;n_customers&quot;: 251,
+      &quot;predicted_arpu_sum&quot;: 756421.0833960543,
+      &quot;pilot_n&quot;: 72,
+      &quot;pilot_batches&quot;: 1,
+      &quot;lift_ratio_mean&quot;: 0.16828201917270735,
+      &quot;standard_error&quot;: 0.09428090415820635,
+      &quot;lift_ratio_lower&quot;: 0.047602461850203226,
+      &quot;communication_cost&quot;: 1004.0,
+      &quot;estimated_net&quot;: 126288.06725869488,
+      &quot;conservative_net&quot;: 35003.50576505007,
+      &quot;reason&quot;: &quot;positive conservative value; exact segment/target/channel piloted&quot;
+    }
+  ],
+  &quot;warnings&quot;: [],
+  &quot;history&quot;: {
+    &quot;rows_used&quot;: 13416,
+    &quot;role&quot;: &quot;hypothesis_ranking_only&quot;
+  },
+  &quot;remaining_resources_after_pilots&quot;: {
+    &quot;budget&quot;: 80016.0,
+    &quot;contacts&quot;: 13184,
+    &quot;pilots_left&quot;: 0
+  },
+  &quot;planned_contacts&quot;: 2022,
+  &quot;planned_cost&quot;: 79380.0,
+  &quot;elapsed_seconds&quot;: 0.20282579199999995,
+  &quot;candidate_cells&quot;: 63
+}</pre></details>
+<p><a href="plan_audit.json">Открыть машинный отчёт JSON</a> · <a href="../submission.csv">submission.csv</a> · <a href="benchmark.json">Результаты сравнения</a></p></section>
+<footer>Отчёт создан командой <code>python tools/build_report.py</code> на исходных синтетических данных. Внешние сервисы и отправка маркетинговых сообщений не используются.</footer>
+</main><script>document.getElementById('search').addEventListener('input',function(){const q=this.value.toLocaleLowerCase();document.querySelectorAll('tbody tr').forEach(r=>r.hidden=!r.textContent.toLocaleLowerCase().includes(q));});</script></html>

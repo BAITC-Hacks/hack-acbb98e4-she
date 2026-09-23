@@ -1,0 +1,592 @@
+{
+  "seed": 42,
+  "campaigns": [
+    {
+      "campaign_name": "Evidence_01_tariff_9_call",
+      "filter_current_tariff": "tariff_8",
+      "filter_arpu_segment": "LOW",
+      "target_tariff": "tariff_9",
+      "channel": "call"
+    },
+    {
+      "campaign_name": "Evidence_02_tariff_9_sms",
+      "filter_current_tariff": "tariff_4",
+      "filter_arpu_segment": "LOW",
+      "target_tariff": "tariff_9",
+      "channel": "sms"
+    },
+    {
+      "campaign_name": "Evidence_03_tariff_11_sms",
+      "filter_current_tariff": "tariff_10",
+      "filter_arpu_segment": "MID",
+      "target_tariff": "tariff_11",
+      "channel": "sms"
+    },
+    {
+      "campaign_name": "Evidence_04_tariff_9_sms",
+      "filter_current_tariff": "tariff_10",
+      "filter_arpu_segment": "LOW",
+      "target_tariff": "tariff_9",
+      "channel": "sms"
+    },
+    {
+      "campaign_name": "Evidence_05_tariff_9_sms",
+      "filter_current_tariff": "tariff_13",
+      "filter_arpu_segment": "LOW",
+      "target_tariff": "tariff_9",
+      "channel": "sms"
+    }
+  ],
+  "audit": {
+    "valid": true,
+    "errors": [],
+    "total_contacts": 2022,
+    "unique_contacts": 2022,
+    "communication_cost": 79380.0,
+    "campaigns": [
+      {
+        "index": 1,
+        "campaign_name": "Evidence_01_tariff_9_call",
+        "target_tariff": "tariff_9",
+        "channel": "call",
+        "contacts": 457,
+        "unique_contacts": 457,
+        "communication_cost": 73120.0,
+        "valid": true,
+        "errors": []
+      },
+      {
+        "index": 2,
+        "campaign_name": "Evidence_02_tariff_9_sms",
+        "target_tariff": "tariff_9",
+        "channel": "sms",
+        "contacts": 299,
+        "unique_contacts": 299,
+        "communication_cost": 1196.0,
+        "valid": true,
+        "errors": []
+      },
+      {
+        "index": 3,
+        "campaign_name": "Evidence_03_tariff_11_sms",
+        "target_tariff": "tariff_11",
+        "channel": "sms",
+        "contacts": 645,
+        "unique_contacts": 645,
+        "communication_cost": 2580.0,
+        "valid": true,
+        "errors": []
+      },
+      {
+        "index": 4,
+        "campaign_name": "Evidence_04_tariff_9_sms",
+        "target_tariff": "tariff_9",
+        "channel": "sms",
+        "contacts": 370,
+        "unique_contacts": 370,
+        "communication_cost": 1480.0,
+        "valid": true,
+        "errors": []
+      },
+      {
+        "index": 5,
+        "campaign_name": "Evidence_05_tariff_9_sms",
+        "target_tariff": "tariff_9",
+        "channel": "sms",
+        "contacts": 251,
+        "unique_contacts": 251,
+        "communication_cost": 1004.0,
+        "valid": true,
+        "errors": []
+      }
+    ]
+  },
+  "pilot_contacts": 1816,
+  "pilot_cost": 19984.0,
+  "total_contacts": 3838,
+  "total_cost": 99364.0,
+  "strategy": {
+    "strategy": "adaptive_evidence_portfolio",
+    "assumptions": {
+      "noise_std": 0.8,
+      "risk_aversion": 1.28,
+      "uncertainty": "working normal-noise estimate; no coverage guarantee",
+      "history": "ranking only; different cohort, non-causal observations",
+      "channel_transfer": "search heuristic only; final channels directly piloted",
+      "pilot_overlap": "sample IDs unavailable; pilot/final overlap is not exactly measurable"
+    },
+    "initial_resources": {
+      "budget": 100000.0,
+      "contacts": 15000,
+      "pilots_left": 20
+    },
+    "pilots": [
+      {
+        "step": 1,
+        "action": "explore",
+        "filters": {
+          "filter_current_tariff": "tariff_4",
+          "filter_arpu_segment": "MID"
+        },
+        "target_tariff": "tariff_9",
+        "channel": "sms",
+        "requested_n": 110,
+        "actual_n": 110,
+        "observed_lift_ratio": -0.06915304167631162,
+        "pooled_lift_ratio": -0.06915304167631162,
+        "standard_error": 0.07627700713964738,
+        "cost": 440.0,
+        "reason": "signed financial history, ARPU coverage and audience value",
+        "priority": 883487.8930396258
+      },
+      {
+        "step": 2,
+        "action": "explore",
+        "filters": {
+          "filter_current_tariff": "tariff_8",
+          "filter_arpu_segment": "LOW"
+        },
+        "target_tariff": "tariff_9",
+        "channel": "sms",
+        "requested_n": 79,
+        "actual_n": 79,
+        "observed_lift_ratio": 0.38185374912031567,
+        "pooled_lift_ratio": 0.38185374912031567,
+        "standard_error": 0.09000703207408192,
+        "cost": 316.0,
+        "reason": "signed financial history, ARPU coverage and audience value",
+        "priority": 347231.0103004313
+      },
+      {
+        "step": 3,
+        "action": "explore",
+        "filters": {
+          "filter_current_tariff": "tariff_8",
+          "filter_arpu_segment": "HIGH"
+        },
+        "target_tariff": "tariff_11",
+        "channel": "sms",
+        "requested_n": 200,
+        "actual_n": 200,
+        "observed_lift_ratio": -0.10836065262919696,
+        "pooled_lift_ratio": -0.10836065262919696,
+        "standard_error": 0.0565685424949238,
+        "cost": 800.0,
+        "reason": "signed financial history, ARPU coverage and audience value",
+        "priority": 227268.3279184941
+      },
+      {
+        "step": 4,
+        "action": "explore",
+        "filters": {
+          "filter_current_tariff": "tariff_8",
+          "filter_arpu_segment": "MID"
+        },
+        "target_tariff": "tariff_10",
+        "channel": "sms",
+        "requested_n": 120,
+        "actual_n": 120,
+        "observed_lift_ratio": -0.032700228243961044,
+        "pooled_lift_ratio": -0.032700228243961044,
+        "standard_error": 0.07302967433402215,
+        "cost": 480.0,
+        "reason": "signed financial history, ARPU coverage and audience value",
+        "priority": 762096.9937069413
+      },
+      {
+        "step": 5,
+        "action": "explore",
+        "filters": {
+          "filter_current_tariff": "tariff_13",
+          "filter_arpu_segment": "MID"
+        },
+        "target_tariff": "tariff_9",
+        "channel": "sms",
+        "requested_n": 106,
+        "actual_n": 106,
+        "observed_lift_ratio": -0.006209889714095935,
+        "pooled_lift_ratio": -0.006209889714095936,
+        "standard_error": 0.07770286898858114,
+        "cost": 424.0,
+        "reason": "signed financial history, ARPU coverage and audience value",
+        "priority": 612085.7843800625
+      },
+      {
+        "step": 6,
+        "action": "explore",
+        "filters": {
+          "filter_current_tariff": "tariff_14",
+          "filter_arpu_segment": "MID"
+        },
+        "target_tariff": "tariff_9",
+        "channel": "sms",
+        "requested_n": 98,
+        "actual_n": 98,
+        "observed_lift_ratio": 0.03324082049799796,
+        "pooled_lift_ratio": 0.03324082049799796,
+        "standard_error": 0.08081220356417687,
+        "cost": 392.0,
+        "reason": "signed financial history, ARPU coverage and audience value",
+        "priority": 420498.9481339764
+      },
+      {
+        "step": 7,
+        "action": "explore",
+        "filters": {
+          "filter_current_tariff": "tariff_10",
+          "filter_arpu_segment": "MID"
+        },
+        "target_tariff": "tariff_11",
+        "channel": "sms",
+        "requested_n": 93,
+        "actual_n": 93,
+        "observed_lift_ratio": 0.13744732513489416,
+        "pooled_lift_ratio": 0.13744732513489416,
+        "standard_error": 0.08295613557843402,
+        "cost": 372.0,
+        "reason": "signed financial history, ARPU coverage and audience value",
+        "priority": 256087.03806480058
+      },
+      {
+        "step": 8,
+        "action": "explore",
+        "filters": {
+          "filter_current_tariff": "tariff_11",
+          "filter_arpu_segment": "LOW"
+        },
+        "target_tariff": "tariff_9",
+        "channel": "sms",
+        "requested_n": 76,
+        "actual_n": 76,
+        "observed_lift_ratio": 0.150469591509849,
+        "pooled_lift_ratio": 0.150469591509849,
+        "standard_error": 0.0917662935482247,
+        "cost": 304.0,
+        "reason": "signed financial history, ARPU coverage and audience value",
+        "priority": 227665.96780358453
+      },
+      {
+        "step": 9,
+        "action": "explore",
+        "filters": {
+          "filter_current_tariff": "tariff_12",
+          "filter_arpu_segment": "LOW"
+        },
+        "target_tariff": "tariff_9",
+        "channel": "sms",
+        "requested_n": 75,
+        "actual_n": 75,
+        "observed_lift_ratio": 0.08553308563814536,
+        "pooled_lift_ratio": 0.08553308563814536,
+        "standard_error": 0.09237604307034011,
+        "cost": 300.0,
+        "reason": "signed financial history, ARPU coverage and audience value",
+        "priority": 208326.92123049402
+      },
+      {
+        "step": 10,
+        "action": "explore",
+        "filters": {
+          "filter_current_tariff": "tariff_10",
+          "filter_arpu_segment": "LOW"
+        },
+        "target_tariff": "tariff_9",
+        "channel": "sms",
+        "requested_n": 75,
+        "actual_n": 75,
+        "observed_lift_ratio": 0.21158463307526082,
+        "pooled_lift_ratio": 0.21158463307526082,
+        "standard_error": 0.09237604307034011,
+        "cost": 300.0,
+        "reason": "signed financial history, ARPU coverage and audience value",
+        "priority": 190729.68278788455
+      },
+      {
+        "step": 11,
+        "action": "explore",
+        "filters": {
+          "filter_current_tariff": "tariff_11",
+          "filter_arpu_segment": "MID"
+        },
+        "target_tariff": "tariff_9",
+        "channel": "sms",
+        "requested_n": 86,
+        "actual_n": 86,
+        "observed_lift_ratio": 0.037447235310405697,
+        "pooled_lift_ratio": 0.037447235310405697,
+        "standard_error": 0.08626621856275074,
+        "cost": 344.0,
+        "reason": "signed financial history, ARPU coverage and audience value",
+        "priority": 168244.14847579438
+      },
+      {
+        "step": 12,
+        "action": "explore",
+        "filters": {
+          "filter_current_tariff": "tariff_8",
+          "filter_arpu_segment": "MID"
+        },
+        "target_tariff": "tariff_9",
+        "channel": "sms",
+        "requested_n": 120,
+        "actual_n": 120,
+        "observed_lift_ratio": -0.06602532031131976,
+        "pooled_lift_ratio": -0.06602532031131976,
+        "standard_error": 0.07302967433402215,
+        "cost": 480.0,
+        "reason": "signed financial history, ARPU coverage and audience value",
+        "priority": 155257.43941066193
+      },
+      {
+        "step": 13,
+        "action": "explore",
+        "filters": {
+          "filter_current_tariff": "tariff_4",
+          "filter_arpu_segment": "LOW"
+        },
+        "target_tariff": "tariff_9",
+        "channel": "sms",
+        "requested_n": 73,
+        "actual_n": 73,
+        "observed_lift_ratio": 0.26717543088325807,
+        "pooled_lift_ratio": 0.26717543088325807,
+        "standard_error": 0.09363291775690447,
+        "cost": 292.0,
+        "reason": "signed financial history, ARPU coverage and audience value",
+        "priority": 145981.6245518829
+      },
+      {
+        "step": 14,
+        "action": "explore",
+        "filters": {
+          "filter_current_tariff": "tariff_13",
+          "filter_arpu_segment": "LOW"
+        },
+        "target_tariff": "tariff_9",
+        "channel": "sms",
+        "requested_n": 72,
+        "actual_n": 72,
+        "observed_lift_ratio": 0.16828201917270735,
+        "pooled_lift_ratio": 0.16828201917270735,
+        "standard_error": 0.09428090415820635,
+        "cost": 288.0,
+        "reason": "signed financial history, ARPU coverage and audience value",
+        "priority": 122725.97459354757
+      },
+      {
+        "step": 15,
+        "action": "channel_check",
+        "filters": {
+          "filter_current_tariff": "tariff_8",
+          "filter_arpu_segment": "LOW"
+        },
+        "target_tariff": "tariff_9",
+        "channel": "call",
+        "requested_n": 79,
+        "actual_n": 79,
+        "observed_lift_ratio": 0.6902246760910126,
+        "pooled_lift_ratio": 0.6902246760910126,
+        "standard_error": 0.09000703207408192,
+        "cost": 12640.0,
+        "reason": "marginal channel economics; direct pilot required",
+        "priority": 118310.87420874712
+      },
+      {
+        "step": 16,
+        "action": "explore",
+        "filters": {
+          "filter_current_tariff": "tariff_13",
+          "filter_arpu_segment": "MID"
+        },
+        "target_tariff": "tariff_10",
+        "channel": "sms",
+        "requested_n": 106,
+        "actual_n": 106,
+        "observed_lift_ratio": 0.015637662985900056,
+        "pooled_lift_ratio": 0.015637662985900056,
+        "standard_error": 0.07770286898858114,
+        "cost": 424.0,
+        "reason": "signed financial history, ARPU coverage and audience value",
+        "priority": 104887.81806096865
+      },
+      {
+        "step": 17,
+        "action": "explore",
+        "filters": {
+          "filter_current_tariff": "tariff_14",
+          "filter_arpu_segment": "LOW"
+        },
+        "target_tariff": "tariff_8",
+        "channel": "sms",
+        "requested_n": 71,
+        "actual_n": 71,
+        "observed_lift_ratio": 0.15138466335764936,
+        "pooled_lift_ratio": 0.15138466335764936,
+        "standard_error": 0.09494253265550827,
+        "cost": 284.0,
+        "reason": "signed financial history, ARPU coverage and audience value",
+        "priority": 97606.79111781517
+      },
+      {
+        "step": 18,
+        "action": "explore",
+        "filters": {
+          "filter_current_tariff": "tariff_12",
+          "filter_arpu_segment": "MID"
+        },
+        "target_tariff": "tariff_9",
+        "channel": "sms",
+        "requested_n": 81,
+        "actual_n": 81,
+        "observed_lift_ratio": 0.0537029103776608,
+        "pooled_lift_ratio": 0.05370291037766079,
+        "standard_error": 0.08888888888888889,
+        "cost": 324.0,
+        "reason": "signed financial history, ARPU coverage and audience value",
+        "priority": 86959.69647167587
+      },
+      {
+        "step": 19,
+        "action": "confirm",
+        "filters": {
+          "filter_current_tariff": "tariff_12",
+          "filter_arpu_segment": "LOW"
+        },
+        "target_tariff": "tariff_9",
+        "channel": "sms",
+        "requested_n": 74,
+        "actual_n": 74,
+        "observed_lift_ratio": 0.01945762293178172,
+        "pooled_lift_ratio": 0.05271708402558893,
+        "standard_error": 0.06553855364152325,
+        "cost": 296.0,
+        "reason": "uncertainty can change profitability or alternative ranking",
+        "priority": 33484.808524057764
+      },
+      {
+        "step": 20,
+        "action": "channel_check",
+        "filters": {
+          "filter_current_tariff": "tariff_8",
+          "filter_arpu_segment": "LOW"
+        },
+        "target_tariff": "tariff_9",
+        "channel": "digital_ads",
+        "requested_n": 22,
+        "actual_n": 22,
+        "observed_lift_ratio": 0.4844248127377302,
+        "pooled_lift_ratio": 0.4844248127377302,
+        "standard_error": 0.17056057308448835,
+        "cost": 484.0,
+        "reason": "marginal channel economics; direct pilot required",
+        "priority": 24597.584935342813
+      }
+    ],
+    "decisions": [
+      {
+        "campaign_name": "Evidence_01_tariff_9_call",
+        "filter_current_tariff": "tariff_8",
+        "filter_arpu_segment": "LOW",
+        "target_tariff": "tariff_9",
+        "channel": "call",
+        "n_customers": 457,
+        "predicted_arpu_sum": 1312258.1647560755,
+        "pilot_n": 79,
+        "pilot_batches": 1,
+        "lift_ratio_mean": 0.6902246760910126,
+        "standard_error": 0.09000703207408192,
+        "lift_ratio_lower": 0.5750156750361877,
+        "communication_cost": 73120.0,
+        "estimated_net": 832632.9667165488,
+        "conservative_net": 681449.0144289635,
+        "reason": "positive conservative value; exact segment/target/channel piloted"
+      },
+      {
+        "campaign_name": "Evidence_02_tariff_9_sms",
+        "filter_current_tariff": "tariff_4",
+        "filter_arpu_segment": "LOW",
+        "target_tariff": "tariff_9",
+        "channel": "sms",
+        "n_customers": 299,
+        "predicted_arpu_sum": 857563.179026669,
+        "pilot_n": 73,
+        "pilot_batches": 1,
+        "lift_ratio_mean": 0.26717543088325807,
+        "standard_error": 0.09363291775690447,
+        "lift_ratio_lower": 0.14732529615442036,
+        "communication_cost": 1196.0,
+        "estimated_net": 227923.81186606688,
+        "conservative_net": 125144.74932123022,
+        "reason": "positive conservative value; exact segment/target/channel piloted"
+      },
+      {
+        "campaign_name": "Evidence_03_tariff_11_sms",
+        "filter_current_tariff": "tariff_10",
+        "filter_arpu_segment": "MID",
+        "target_tariff": "tariff_11",
+        "channel": "sms",
+        "n_customers": 645,
+        "predicted_arpu_sum": 3003700.1472749137,
+        "pilot_n": 93,
+        "pilot_batches": 1,
+        "lift_ratio_mean": 0.13744732513489416,
+        "standard_error": 0.08295613557843402,
+        "lift_ratio_lower": 0.031263471594498604,
+        "communication_cost": 2580.0,
+        "estimated_net": 410270.55075022456,
+        "conservative_net": 91326.09423272054,
+        "reason": "positive conservative value; exact segment/target/channel piloted"
+      },
+      {
+        "campaign_name": "Evidence_04_tariff_9_sms",
+        "filter_current_tariff": "tariff_10",
+        "filter_arpu_segment": "LOW",
+        "target_tariff": "tariff_9",
+        "channel": "sms",
+        "n_customers": 370,
+        "predicted_arpu_sum": 972233.5682257856,
+        "pilot_n": 75,
+        "pilot_batches": 1,
+        "lift_ratio_mean": 0.21158463307526082,
+        "standard_error": 0.09237604307034011,
+        "lift_ratio_lower": 0.09334329794522547,
+        "communication_cost": 1480.0,
+        "estimated_net": 204229.6827965044,
+        "conservative_net": 89271.4876312492,
+        "reason": "positive conservative value; exact segment/target/channel piloted"
+      },
+      {
+        "campaign_name": "Evidence_05_tariff_9_sms",
+        "filter_current_tariff": "tariff_13",
+        "filter_arpu_segment": "LOW",
+        "target_tariff": "tariff_9",
+        "channel": "sms",
+        "n_customers": 251,
+        "predicted_arpu_sum": 756421.0833960543,
+        "pilot_n": 72,
+        "pilot_batches": 1,
+        "lift_ratio_mean": 0.16828201917270735,
+        "standard_error": 0.09428090415820635,
+        "lift_ratio_lower": 0.047602461850203226,
+        "communication_cost": 1004.0,
+        "estimated_net": 126288.06725869488,
+        "conservative_net": 35003.50576505007,
+        "reason": "positive conservative value; exact segment/target/channel piloted"
+      }
+    ],
+    "warnings": [],
+    "history": {
+      "rows_used": 13416,
+      "role": "hypothesis_ranking_only"
+    },
+    "remaining_resources_after_pilots": {
+      "budget": 80016.0,
+      "contacts": 13184,
+      "pilots_left": 0
+    },
+    "planned_contacts": 2022,
+    "planned_cost": 79380.0,
+    "elapsed_seconds": 0.20282579199999995,
+    "candidate_cells": 63
+  }
+}

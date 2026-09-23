@@ -1,0 +1,22 @@
+test_bad_pilots_stop_without_spending_all_experiments (test_agent.AgentBehaviorTests) ... ok
+test_pilot_outcome_changes_target (test_agent.AgentBehaviorTests) ... ok
+test_revenue_loss_is_not_disguised_by_small_customer_growth (test_agent.AgentBehaviorTests) ... ok
+test_same_observations_produce_same_plan (test_agent.AgentBehaviorTests) ... ok
+test_zero_money_can_use_free_channel (test_agent.AgentBehaviorTests) ... ok
+test_actual_audience_and_cost (test_plan_validation.PlanValidationTests) ... ok
+test_empty_strings_and_empty_audiences_are_errors (test_plan_validation.PlanValidationTests) ... ok
+test_extreme_costs_stay_json_safe (test_plan_validation.PlanValidationTests) ... ok
+test_inputs_are_not_mutated (test_plan_validation.PlanValidationTests) ... ok
+test_invalid_context_is_reported_without_nonfinite_json (test_plan_validation.PlanValidationTests) ... ok
+test_invalid_tariff_channel_and_filters (test_plan_validation.PlanValidationTests) ... ok
+test_multiple_current_tariffs_and_missing_filters (test_plan_validation.PlanValidationTests) ... ok
+test_overlapping_campaigns_spend_contacts_twice (test_plan_validation.PlanValidationTests) ... ok
+test_per_campaign_boundary_5000 (test_plan_validation.PlanValidationTests) ... ok
+test_plan_shape_and_campaign_count (test_plan_validation.PlanValidationTests) ... ok
+test_remaining_limits_after_pilots_are_used (test_plan_validation.PlanValidationTests) ... ok
+test_unknown_fields_and_explicit_ids_are_rejected (test_plan_validation.PlanValidationTests) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.278s
+
+OK

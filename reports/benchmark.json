@@ -1,0 +1,176 @@
+{
+  "environment": "Organizer mock environment, unchanged",
+  "warning": "Synthetic data; mock results do not predict judging scores.",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "agents": {
+    "template": {
+      "runs": [
+        {
+          "seed": 0,
+          "net_arpu_gain": -1019431.0606441048,
+          "n_pilots": 6,
+          "seconds": 0.173,
+          "evaluator_messages": ""
+        },
+        {
+          "seed": 1,
+          "net_arpu_gain": -576203.7790105487,
+          "n_pilots": 6,
+          "seconds": 0.156,
+          "evaluator_messages": ""
+        },
+        {
+          "seed": 2,
+          "net_arpu_gain": -338970.97459386534,
+          "n_pilots": 6,
+          "seconds": 0.158,
+          "evaluator_messages": ""
+        },
+        {
+          "seed": 3,
+          "net_arpu_gain": -140280.93497766246,
+          "n_pilots": 6,
+          "seconds": 0.124,
+          "evaluator_messages": ""
+        },
+        {
+          "seed": 4,
+          "net_arpu_gain": -1019236.6714434463,
+          "n_pilots": 6,
+          "seconds": 0.146,
+          "evaluator_messages": ""
+        },
+        {
+          "seed": 5,
+          "net_arpu_gain": -366963.8866435362,
+          "n_pilots": 6,
+          "seconds": 0.146,
+          "evaluator_messages": ""
+        },
+        {
+          "seed": 6,
+          "net_arpu_gain": -320311.8401915287,
+          "n_pilots": 6,
+          "seconds": 0.143,
+          "evaluator_messages": ""
+        },
+        {
+          "seed": 7,
+          "net_arpu_gain": -348931.70612175035,
+          "n_pilots": 6,
+          "seconds": 0.133,
+          "evaluator_messages": ""
+        },
+        {
+          "seed": 8,
+          "net_arpu_gain": -76493.45195450934,
+          "n_pilots": 6,
+          "seconds": 0.137,
+          "evaluator_messages": ""
+        },
+        {
+          "seed": 9,
+          "net_arpu_gain": -601537.532706727,
+          "n_pilots": 6,
+          "seconds": 0.14,
+          "evaluator_messages": ""
+        }
+      ],
+      "mean": -480836.1838287679,
+      "median": -357947.7963826433,
+      "min": -1019431.0606441048,
+      "max": -76493.45195450934,
+      "positive_runs": 0
+    },
+    "adaptive": {
+      "runs": [
+        {
+          "seed": 0,
+          "net_arpu_gain": 1276838.3471563014,
+          "n_pilots": 20,
+          "seconds": 0.337,
+          "evaluator_messages": ""
+        },
+        {
+          "seed": 1,
+          "net_arpu_gain": 1577457.9796961108,
+          "n_pilots": 20,
+          "seconds": 0.356,
+          "evaluator_messages": ""
+        },
+        {
+          "seed": 2,
+          "net_arpu_gain": 1905859.2631968134,
+          "n_pilots": 20,
+          "seconds": 0.366,
+          "evaluator_messages": ""
+        },
+        {
+          "seed": 3,
+          "net_arpu_gain": 1515107.335641432,
+          "n_pilots": 19,
+          "seconds": 0.343,
+          "evaluator_messages": ""
+        },
+        {
+          "seed": 4,
+          "net_arpu_gain": 1503886.6672132122,
+          "n_pilots": 20,
+          "seconds": 0.359,
+          "evaluator_messages": ""
+        },
+        {
+          "seed": 5,
+          "net_arpu_gain": 1394856.7303655709,
+          "n_pilots": 20,
+          "seconds": 0.357,
+          "evaluator_messages": ""
+        },
+        {
+          "seed": 6,
+          "net_arpu_gain": 1261304.4099648842,
+          "n_pilots": 20,
+          "seconds": 0.339,
+          "evaluator_messages": ""
+        },
+        {
+          "seed": 7,
+          "net_arpu_gain": 1349134.1818963555,
+          "n_pilots": 20,
+          "seconds": 0.32,
+          "evaluator_messages": ""
+        },
+        {
+          "seed": 8,
+          "net_arpu_gain": 1890593.6874180222,
+          "n_pilots": 20,
+          "seconds": 0.354,
+          "evaluator_messages": ""
+        },
+        {
+          "seed": 9,
+          "net_arpu_gain": 1100795.9287818735,
+          "n_pilots": 20,
+          "seconds": 0.333,
+          "evaluator_messages": ""
+        }
+      ],
+      "mean": 1477583.4531330576,
+      "median": 1449371.6987893917,
+      "min": 1100795.9287818735,
+      "max": 1905859.2631968134,
+      "positive_runs": 10
+    }
+  }
+}
