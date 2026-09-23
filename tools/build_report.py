@@ -30,6 +30,10 @@ def main():
     final_cost = audit["communication_cost"]
     total_cost = pilot_cost + final_cost
     total_contacts = pilot_contacts + audit["total_contacts"]
+    # Public environment balances already include pilot spending. Subtract
+    # only the final plan here, so pilots are not charged twice.
+    remaining_budget = env.remaining_budget - final_cost
+    remaining_contacts = env.remaining_contacts - audit["total_contacts"]
     rows = []
     for campaign, detail in zip(campaigns, audit["campaigns"]):
         filters = ", ".join(f"{k.removeprefix('filter_')}: {v}" for k, v in campaign.items()
@@ -55,6 +59,8 @@ def main():
     report = {"seed": 42, "campaigns": campaigns, "audit": audit,
               "pilot_contacts": pilot_contacts, "pilot_cost": pilot_cost,
               "total_contacts": total_contacts, "total_cost": total_cost,
+              "remaining_budget_after_plan": remaining_budget,
+              "remaining_contacts_after_plan": remaining_contacts,
               "strategy": strategy}
     output = ROOT / "reports"
     output.mkdir(exist_ok=True)
@@ -82,8 +88,8 @@ footer{color:var(--muted);font-size:13px;margin-top:24px}@media(max-width:760px)
 <p>Синтетический кейс Beeline. Результаты относятся к выданной мок-среде; это не прогноз оценки жюри.</p></header>
 <div class="stats">
 <article><div class="sub">Финальные кампании</div><div class="number">__COUNT__ / 10</div><div class="sub">корректность плана проверена</div></article>
-<article><div class="sub">Расходы, у.е.</div><div class="number">__COST__</div><div class="sub">из 100 000, включая пилоты</div></article>
-<article><div class="sub">Контакты</div><div class="number">__CONTACTS__</div><div class="sub">из 15 000, включая повторы и пилоты</div></article>
+<article><div class="sub">Расходы, у.е.</div><div class="number">__COST__</div><div class="sub">из 100 000, включая пилоты</div><p class="sub">Остаток после всех кампаний: <strong>__REMAINING_BUDGET__ у.е.</strong></p></article>
+<article><div class="sub">Контакты</div><div class="number">__CONTACTS__</div><div class="sub">из 15 000, включая повторы и пилоты</div><p class="sub">Остаток после всех кампаний: <strong>__REMAINING_CONTACTS__</strong></p></article>
 <article><div class="sub">Пилоты</div><div class="number">__PILOTS__ / 20</div><div class="sub">фактически выполнены, seed 42</div></article>
 </div>
 <section><h2>План для аналитика <button onclick="window.print()">Печать / PDF</button></h2>
@@ -100,6 +106,8 @@ footer{color:var(--muted);font-size:13px;margin-top:24px}@media(max-width:760px)
 </main><script>document.getElementById('search').addEventListener('input',function(){const q=this.value.toLocaleLowerCase();document.querySelectorAll('tbody tr').forEach(r=>r.hidden=!r.textContent.toLocaleLowerCase().includes(q));});</script></html>"""
     values = {"__COUNT__": str(len(campaigns)), "__COST__": fmt(total_cost),
               "__CONTACTS__": fmt(total_contacts), "__PILOTS__": str(len(env.pilot_history)),
+              "__REMAINING_BUDGET__": fmt(remaining_budget),
+              "__REMAINING_CONTACTS__": fmt(remaining_contacts),
               "__ROWS__": "\n".join(rows), "__UNIQUE__": fmt(audit["unique_contacts"]),
               "__BENCHMARK__": benchmark_html,
               "__STRATEGY__": html.escape(json.dumps(strategy, ensure_ascii=False, indent=2))}
